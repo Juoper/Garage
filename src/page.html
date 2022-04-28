@@ -1,0 +1,28 @@
+<!DOCTYPE HTML><html>
+<head>
+  <title>Open Garage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <style>
+    html {font-family: Arial; display: inline-block; text-align: center;}
+    h2 {font-size: 3.0rem;}
+    p {font-size: 3.0rem;}
+    button{width: 80%; height: 50%; font-size: 20vmin;}
+
+    button:active{width: 80%; height: 50%; font-size: 20vmin; background-color: rgb(118, 118, 118);}
+
+    body {max-width: 600px; margin:0px auto; padding-bottom: 25px;}
+  </style>
+</head>
+<body>
+  <h2>Open Garage</h2>
+  <button onclick="openGarage()">Open Garage</button>
+
+<script>function openGarage(){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "garage?message=test", true);
+  xhr.send();
+}
+</script>
+</body>
+</html>
