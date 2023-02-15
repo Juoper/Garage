@@ -11,8 +11,8 @@ const char* PARAM_INPUT_1 = "password";
 
 
 //test
-const char* ssid = "home";
-const char* password = "39498482789698294254";
+const char* ssid = "YOUR_SSID_HERE";
+const char* password = "YOUR_WIFI_PASSWORD_HERE";
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
