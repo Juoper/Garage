@@ -4,25 +4,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="data:,">
   <style>
-    html {font-family: Arial; display: inline-block; text-align: center;}
+    html {font-family: Arial; display: inline; text-align: center;}
+    body {display: inline;}
     h2 {font-size: 3.0rem;}
     p {font-size: 3.0rem;}
-    button{width: 80%; height: 50%; font-size: 20vmin;}
-
-    button:active{width: 80%; height: 50%; font-size: 20vmin; background-color: rgb(118, 118, 118);}
+    button{width: 150px; height: 150px; font-size:5vmax; margin: 20px; display: inline-block;}
+    #status{background-color: green; width: 80%; margin: auto; height: 50px; font-size: xx-large;}
+    button:active{ background-color: rgb(118, 118, 118);}
 
     body {max-width: 600px; margin:0px auto; padding-bottom: 25px;}
   </style>
 </head>
 <body>
   <h2>Open Garage</h2>
-  <button onclick="openGarage()">Open Garage</button>
+  <div id="status">
+    Status:
+    Open
+  </div>
+  <button onclick="doRequest('open')">Open Garage</button>
+  <button onclick="doRequest('close')">Close Garage</button>
+  <button onclick="doRequest('toggle')">Toggle Garage</button>
+  <button onclick="doRequest('stop')">Stop Garage</button>
 
-<script>function openGarage(){
+
+<script>
+
+function doRequest(endpoint){
+  changeStatus(endpoint)
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "garage?message=test", true);
+  xhr.open("GET", `/${endpoint}?password=thanner2022`, true);
   xhr.send();
 }
+
+function changeStatus(endpoint){
+  switch (endpoint) {
+    case 'open':
+      changeStatusOpen()
+      break;
+    case 'close':
+      changeStatusClosed()
+      break;
+    case 'toggle':
+      toggleStatus()
+      break;
+  }
+}
+function toggleStatus(){
+  switch (document.getElementById("status").innerHTML){
+    case 'Status: Open':
+      changeStatusClosed()
+      break;
+    case 'Status: Closed':
+      changeStatusOpen()
+      break;
+    
+  }
+}
+
+function changeStatusOpen(){
+  document.getElementById("status").innerHTML = "Status: Open";
+  document.getElementById("status").style.backgroundColor = "green";
+}
+
+function changeStatusClosed(){
+  document.getElementById("status").innerHTML = "Status: Closed";
+  document.getElementById("status").style.backgroundColor = "red";
+}
+
 </script>
 </body>
 </html>
